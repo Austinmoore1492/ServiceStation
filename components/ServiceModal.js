@@ -59,7 +59,7 @@ export default class ServiceModal extends React.Component {
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.color, color: colors.lightGrey}]} 
                     placeholder={this.state.placeholderText}
-                    placeholderTextColor='#7a7a7a'
+                    placeholderTextColor='#7a7a7a7'
                     />
                     <TouchableOpacity style={[styles.addService, {backgroundColor: this.state.color}]}>
                         <AntDesign name='plus' size={16} color={colors.white} />
