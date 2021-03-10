@@ -50,8 +50,9 @@ export default class AddListModal extends React.Component {
                     <Text style={styles.title}>Add A Service</Text>
 
                     <TextInput 
-                    style={styles.input} 
+                    style={[styles.input, {borderColor: this.state.color}]} 
                     placeholder='Service Name?'
+                    placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}
                     />
 
@@ -60,7 +61,8 @@ export default class AddListModal extends React.Component {
                     </View>
 
                     <TouchableOpacity style={[styles.create,{ backgroundColor: this.state.color}]} onPress={this.createService}>
-                        <Text style={{color: colors.white, fontWeight: "600"}}>Add</Text>
+                        <Text 
+                        style={{color: colors.white, fontWeight: "600"}}>Add</Text>
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
@@ -74,17 +76,18 @@ const styles = StyleSheet.create ({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#1d1d1d',
     },
     title: {
         fontSize: 28,
         fontWeight: '800',
-        color: colors.black,
+        color: colors.lightGrey,
         alignSelf: 'center',
         marginBottom: 16,
     },
     input: {
         borderWidth: StyleSheet.hairlineWidth,
-        borderColor: colors.blue,
+        color: colors.lightGrey,
         borderRadius: 6,
         height: 50,
         marginTop: 8,

@@ -12,14 +12,15 @@ export default class ServiceModal extends React.Component {
         color: this.props.list.color,
         service: this.props.list.service,
         data: this.props.list.date,
+        placeholderText: `Add A New ${this.props.list.name}`,
     }
 
     renderService = service => {
         return (
             <View style={styles.serviceContainer}>
                 <View style={{flexDirection: 'column'}}>
-                    <Text>{service.title}</Text>
-                    <Text>Date: {service.date}</Text>
+                    <Text style={{ color: colors.lightGrey }}>{service.title}</Text>
+                    <Text style={{ color: colors.lightGrey }}>Date: {service.date}</Text>
                 </View>
             </View>
         )
@@ -40,12 +41,13 @@ export default class ServiceModal extends React.Component {
                             {this.state.name}
                         </Text>
                         <Text style={styles.taskCount}>
-                            {completedCount} of {taskCount} Services
+                            {completedCount} of {taskCount} {this.state.name}s Complete
                         </Text>
                     </View>
                 </View>
-                <View style={[styles.section, {flex: 3}]}>
+                <View style={[styles.section,  {flex: 3}]}>
                     <FlatList 
+                    style={styles.text}
                     data={this.state.service} 
                     renderItem={({item}) => this.renderService(item)} 
                     keyExtractor={(item, index) => index.toString()}
@@ -54,7 +56,11 @@ export default class ServiceModal extends React.Component {
                     />
                 </View>
                 <KeyboardAvoidingView style={[styles.section, styles.footer]} behavior="padding">
-                    <TextInput style={[styles.input, {borderColor: this.state.color}]} />
+                    <TextInput 
+                    style={[styles.input, {borderColor: this.state.color, color: colors.lightGrey}]} 
+                    placeholder={this.state.placeholderText}
+                    placeholderTextColor='#7a7a7a'
+                    />
                     <TouchableOpacity style={[styles.addService, {backgroundColor: this.state.color}]}>
                         <AntDesign name='plus' size={16} color={colors.white} />
                     </TouchableOpacity>
@@ -67,6 +73,7 @@ export default class ServiceModal extends React.Component {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
+        backgroundColor: '#1d1d1d',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -82,12 +89,15 @@ const styles = StyleSheet.create ({
     title: {
         fontSize: 30,
         fontWeight: '800',
-        color: colors.black,
+        color: colors.lightGrey,
     },
     taskCount: {
         marginTop: 4,
         marginBottom: 16,
         color: colors.grey,
+    },
+    text: {
+        color: colors.lightGrey,
     },
     footer: {
         paddingHorizontal: 32,

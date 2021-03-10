@@ -25,7 +25,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar
-          barStyle="dark-content"
+          barStyle="light-content"
         />
         <Modal animationType='slide' visible={this.state.addServiceVisible} onRequestClose={() => this.toggleAddService()}>
           <AddListModal closeModal={() => this.toggleAddService()}/>
@@ -62,7 +62,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e8eaed',
+    backgroundColor: '#1d1d1d',
     alignItems: 'center',
     paddingTop: 75,
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 38,
     fontWeight: '800',
-    color: colors.black,
+    color: colors.lightGrey,
     paddingHorizontal: 10,
   },
   addList: {
