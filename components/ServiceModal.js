@@ -33,7 +33,7 @@ export default class ServiceModal extends React.Component {
         return (
             <SafeAreaView style={styles.container}>
                    <TouchableOpacity style={{position: 'absolute', top: 64, right: 32, zIndex: 10}} onPress={this.props.closeModal}>
-                    <AntDesign name="close" size={24} color={colors.black} />
+                    <AntDesign name="close" size={24} color={this.state.color} />
                 </TouchableOpacity>
                 <View style={[styles.section, styles.header, {borderBottomColor: this.state.color }]}>
                     <View>
@@ -59,7 +59,7 @@ export default class ServiceModal extends React.Component {
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.color, color: colors.lightGrey}]} 
                     placeholder={this.state.placeholderText}
-                    placeholderTextColor='#7a7a7a7'
+                    placeholderTextColor='#7a7a7a'
                     />
                     <TouchableOpacity style={[styles.addService, {backgroundColor: this.state.color}]}>
                         <AntDesign name='plus' size={16} color={colors.white} />
