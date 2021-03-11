@@ -1,70 +1,98 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList, KeyboardAvoidingView, TextInput, Touchable } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList, Modal } from 'react-native';
+
 import colors from '../Colors';
+import tempData from '../tempData';
+import AddServiceModal from './AddServiceModal';
 
 import { AntDesign } from '@expo/vector-icons';
-import tempData from '../tempData';
+
 
 export default class ServiceModal extends React.Component {
 
     state = {
-        name: this.props.list.name,
-        color: this.props.list.color,
-        service: this.props.list.service,
-        data: this.props.list.date,
+        newService: '',
+        addServiceVisible: false,
         placeholderText: `Add A New ${this.props.list.name}`,
     }
+    
+      toggleAddService() {
+        this.setState({addServiceVisible: !this.state.addServiceVisible})
+      }
 
-    renderService = service => {
+      toggleServiceCompleted = index => {
+          let list = this.props.list;
+          list.service[index].completed = !list.service[index].completed
+
+          this.props.updateList(list)
+      }
+
+    renderService = (service, index) => {
         return (
             <View style={styles.serviceContainer}>
                 <View style={{flexDirection: 'column'}}>
+                <TouchableOpacity onPress={() => this.toggleServiceCompleted(index)}>
                     <Text style={{ color: colors.lightGrey }}>{service.title}</Text>
                     <Text style={{ color: colors.lightGrey }}>Date: {service.date}</Text>
+                    
+                        <Text 
+                        style={{ color: colors.lightGrey }}
+                        >Completed: {service.completed.toString()}
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
     }
 
     render (){
-        const taskCount = this.state.service.length
-        const completedCount = this.state.service.filter(service => service.completed).length
+        const list = this.props.list;
+
+        const taskCount = list.service.length
+        const completedCount = list.service.filter(service => service.completed).length
 
         return (
             <SafeAreaView style={styles.container}>
                    <TouchableOpacity style={{position: 'absolute', top: 64, right: 32, zIndex: 10}} onPress={this.props.closeModal}>
-                    <AntDesign name="close" size={24} color={this.state.color} />
+                    <AntDesign name="close" size={24} color={list.color} />
                 </TouchableOpacity>
-                <View style={[styles.section, styles.header, {borderBottomColor: this.state.color }]}>
+                <View style={[styles.section, styles.header, { borderBottomColor: list.color }]}>
                     <View>
                         <Text style={styles.title}>
-                            {this.state.name}
+                            {list.name}
                         </Text>
                         <Text style={styles.taskCount}>
-                            {completedCount} of {taskCount} {this.state.name}s Complete
+                            {completedCount} of {taskCount} {list.name}s Complete
                         </Text>
                     </View>
                 </View>
                 <View style={[styles.section,  {flex: 3}]}>
                     <FlatList 
                     style={styles.text}
-                    data={this.state.service} 
-                    renderItem={({item}) => this.renderService(item)} 
+                    data={list.service} 
+                    renderItem={({item, index}) => this.renderService(item, index)} 
                     keyExtractor={(item, index) => index.toString()}
                     contentContainerStyle={{paddingHorizontal: 32, paddingVertical: 64}}
                     showsVerticalScrollIndicator={false}
                     />
                 </View>
-                <KeyboardAvoidingView style={[styles.section, styles.footer]} behavior="padding">
-                    <TextInput 
-                    style={[styles.input, {borderColor: this.state.color, color: colors.lightGrey}]} 
-                    placeholder={this.state.placeholderText}
-                    placeholderTextColor='#7a7a7a'
+
+                <Modal animationType='slide' visible={this.state.addServiceVisible} onRequestClose={() => this.toggleAddService()}>
+                    <AddServiceModal 
+                    closeModal={() => this.toggleAddService()} 
+                    color={list.color}
+                    list={list}
+                    updateList={this.props.updateList}
                     />
-                    <TouchableOpacity style={[styles.addService, {backgroundColor: this.state.color}]}>
-                        <AntDesign name='plus' size={16} color={colors.white} />
-                    </TouchableOpacity>
-                </KeyboardAvoidingView>
+                </Modal>
+                <View style={[ styles.addButton,{backgroundColor: list.color} ]} >
+                <TouchableOpacity 
+                    onPress={() => this.toggleAddService()}
+                >
+                     <Text style={styles.add}>{ this.state.placeholderText }</Text>
+                </TouchableOpacity>
+               
+                </View>
             </SafeAreaView>
         )
     }
@@ -98,6 +126,22 @@ const styles = StyleSheet.create ({
     },
     text: {
         color: colors.lightGrey,
+    },
+    addButton: {
+        alignSelf: 'stretch', 
+        marginVertical: 48, 
+        flexDirection: 'row',
+        marginHorizontal: 32,
+        borderRadius: 6,
+        height: 50,
+        marginTop: 8,
+        paddingHorizontal: 16,
+        fontSize: 24, 
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+    },
+    add: {
+      color: colors.white,
     },
     footer: {
         paddingHorizontal: 32,

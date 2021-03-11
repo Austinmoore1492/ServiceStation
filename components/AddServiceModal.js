@@ -5,60 +5,48 @@ import colors from '../Colors';
 import { AntDesign } from '@expo/vector-icons';
 import tempData from '../tempData';
 
-export default class AddListModal extends React.Component {
-  backgroundColors = ['#5cd859', '#24a6d9', '#595bd9', '#8022d9', '#d159d8', '#d85963', '#d88559']
+export default class AddServiceModal extends React.Component {
 
     state = {
       name: '',
-      color: this.backgroundColors[0]
+      date: '',
+      completed: false,
     }
 
     createService = () => {
-      const {name, color} = this.state;
+      let list = this.props.list;
+      list.service.push({ title: this.state.name, date: this.state.date, completed: false})
 
-      const list = { name, color }
-
-      this.props.addList(list)
-
-      this.setState({ name: '' });
+      this.props.updateList(list);
+      this.setState({ name: '', date: ''})
       this.props.closeModal();
     }
 
-    renderColors() {
-      return this.backgroundColors.map(color => {
-        return (
-          <TouchableOpacity 
-          key={color} 
-          style={[styles.colorSelect, {backgroundColor: color}]}
-          onPress={() => this.setState({ color })}
-          />
-        )
-
-      })
-    }
 
     render (){
         return (
             <KeyboardAvoidingView style={styles.container} behavior='padding'>
                 <TouchableOpacity style={{position: 'absolute', top: 64, right: 32, zIndex: 10}} onPress={this.props.closeModal}>
-                    <AntDesign name="close" size={24} color={this.state.color} />
+                    <AntDesign name="close" size={24} color={this.props.color} />
                 </TouchableOpacity>
 
                 <View style={{alignSelf: 'stretch', marginHorizontal: 32}}>
-                    <Text style={styles.title}>Add A Service</Text>
+                    <Text style={styles.title}>Add A New {this.props.name}</Text>
 
                     <TextInput 
-                    style={[styles.input, {borderColor: this.state.color}]} 
-                    placeholder='Service Name?'
+                    style={[styles.input, {borderColor: this.props.color}]} 
+                    placeholder='Service Center'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}
                     />
+                     <TextInput 
+                    style={[styles.input, {borderColor: this.props.color}]} 
+                    placeholder='Date'
+                    placeholderTextColor='#7a7a7a'
+                    onChangeText={text =>this.setState({ date: text })}
+                    />
 
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 12}}>
-                      {this.renderColors()}
-                    </View>
-
-                    <TouchableOpacity style={[styles.create,{ backgroundColor: this.state.color}]} onPress={this.createService}>
+                    <TouchableOpacity style={[styles.create, { backgroundColor: this.props.color }]} onPress={this.createService}>
                         <Text 
                         style={{color: colors.white, fontWeight: "600"}}>Add</Text>
                     </TouchableOpacity>

@@ -1,5 +1,6 @@
 export default tempData = [
     {
+        id: 1,
         name: 'Oil Change',
         color: '#24a6d9',
         service: [
@@ -26,6 +27,7 @@ export default tempData = [
         ]
     },
     {
+        id: 2,
         name: 'Tire Rotation',
         color: '#8022d9',
         service: [
@@ -42,6 +44,7 @@ export default tempData = [
         ]
     },
     {
+        id: 3,
         name: 'Hail Damage Repair',
         color: '#595bd9',
         service: [
