@@ -37,7 +37,7 @@ export default class ServiceModal extends React.Component {
                     
                         <Text 
                         style={{ color: colors.lightGrey }}
-                        >Completed: {service.completed.toString()}
+                        >Completed: {service.completed ? 'Yes' : 'No'}
                         </Text>
                     </TouchableOpacity>
                 </View>
