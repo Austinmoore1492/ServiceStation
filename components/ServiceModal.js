@@ -30,8 +30,8 @@ export default class ServiceModal extends React.Component {
         return (
             <View 
             style={[ styles.serviceContainer, { borderLeftColor: this.props.list.color }]}>
-                <View style={{flexDirection: 'column'}}>
-                <TouchableOpacity onPress={() => this.toggleServiceCompleted(index)}>
+                <View style={{flexDirection: 'column', width: '100%' }}>
+                <TouchableOpacity style={{ width: '100%' }} onPress={() => this.toggleServiceCompleted(index)}>
                     <Text style={{ color: colors.lightGrey }}>{service.title}</Text>
                     <Text style={{ color: colors.lightGrey }}>Date: {service.date}</Text>
                     
