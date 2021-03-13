@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1d1d1d',
     alignItems: 'center',
-    paddingTop: 75,
+    paddingTop: 100,
   },
   divider: {
     backgroundColor: colors.lightBlue,

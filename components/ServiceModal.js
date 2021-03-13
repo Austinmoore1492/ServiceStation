@@ -28,7 +28,8 @@ export default class ServiceModal extends React.Component {
 
     renderService = (service, index) => {
         return (
-            <View style={styles.serviceContainer}>
+            <View 
+            style={[ styles.serviceContainer, { borderLeftColor: this.props.list.color }]}>
                 <View style={{flexDirection: 'column'}}>
                 <TouchableOpacity onPress={() => this.toggleServiceCompleted(index)}>
                     <Text style={{ color: colors.lightGrey }}>{service.title}</Text>
@@ -166,5 +167,9 @@ const styles = StyleSheet.create ({
         paddingVertical: 16,
         flexDirection: 'row',
         alignItems: 'center',
+        borderWidth: 2,
+        borderColor: 'transparent',
+        marginBottom: 16,
+        paddingLeft: 10
     }
 })

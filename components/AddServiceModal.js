@@ -11,16 +11,35 @@ export default class AddServiceModal extends React.Component {
       name: '',
       date: '',
       completed: false,
+      errors: []
     }
 
     createService = () => {
+        const {name, date, color} = this.state;
+        let errors = []
+        
+        if(name === '' ){
+          errors.push('name')
+        } 
+
+        if(date === ''){
+            errors.push('date')
+        }
+
+        if (errors.length) { 
+          this.setState({ errors });
+          return;
+        } 
+        if(!errors.length) {
+       
       let list = this.props.list;
-      list.service.push({ title: this.state.name, date: this.state.date, completed: false})
+      list.service.unshift({ title: this.state.name, date: this.state.date, completed: false})
 
       this.props.updateList(list);
       this.setState({ name: '', date: ''})
       this.props.closeModal();
-    }
+        }
+      }
 
 
     render (){
@@ -34,13 +53,13 @@ export default class AddServiceModal extends React.Component {
                     <Text style={styles.title}>Add A New {this.props.name}</Text>
 
                     <TextInput 
-                    style={[styles.input, {borderColor: this.props.color}]} 
+                    style={[styles.input, {borderColor: this.state.errors.includes('name') ? 'red' : this.props.color}]} 
                     placeholder='Service Center'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}
                     />
                      <TextInput 
-                    style={[styles.input, {borderColor: this.props.color}]} 
+                    style={[styles.input, {borderColor: this.state.errors.includes('date') ? 'red' : this.props.color}]} 
                     placeholder='Date'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ date: text })}
