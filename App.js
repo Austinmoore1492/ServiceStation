@@ -34,6 +34,7 @@ export default class App extends React.Component {
   renderList = list => {
     return <ServiceList list={list} updateList={ this.updateList }/>
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -50,13 +51,8 @@ export default class App extends React.Component {
           </Text>
           <View style={styles.divider} />
         </View>
-        <View style={{ marginVertical: 48 }} >
-          <TouchableOpacity style={styles.addList} onPress={() => this.toggleAddService()}>
-            <AntDesign name="plus" size={16} color={colors.blue} ></AntDesign>
-          </TouchableOpacity>
-          <Text style={styles.add}>Add List</Text>
-        </View>
-        <View style={{ height: 275, paddingLeft: 32 }}>
+     
+        <View style={{ height: '50%', paddingLeft: 16, marginVertical: 150 }}>
           <FlatList 
             data={this.state.lists} 
             keyExtractor={item => item.name} 
@@ -65,6 +61,12 @@ export default class App extends React.Component {
             renderItem={({item}) => this.renderList(item)}
             keyboardShouldPersistTaps="always"
             />
+        </View>
+        <View style={styles.addListButton} >
+          <TouchableOpacity style={styles.addList} onPress={() => this.toggleAddService()}>
+            <AntDesign name="plus" size={16} color={colors.blue} ></AntDesign>
+          </TouchableOpacity>
+          <Text style={styles.add}>Add List</Text>
         </View>
       </View>
 
@@ -101,6 +103,15 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  addListButton: {
+    position: 'absolute',
+    bottom: 75,
+    left: '50%',
+    transform: [
+      {
+        translateX: "-30%"
+      }]
   },
   add: {
     color: colors.blue,

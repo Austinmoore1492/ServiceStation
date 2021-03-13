@@ -10,18 +10,29 @@ export default class AddListModal extends React.Component {
 
     state = {
       name: '',
-      color: this.backgroundColors[0]
+      color: this.backgroundColors[0],
+      errors: []
     }
 
     createService = () => {
       const {name, color} = this.state;
+      let errors = []
+      
+      if(name === '' ){
+        errors.push('name')
+      } 
+      if (errors.length) { 
+        this.setState({ errors });
+        return;
+      } 
+      if(!errors.length) {
+        const list = { name, color }
 
-      const list = { name, color }
-
-      this.props.addList(list)
-
-      this.setState({ name: '' });
-      this.props.closeModal();
+        this.props.addList(list)
+        this.setState({ errors: [] });
+        this.setState({ name: '' });
+        this.props.closeModal();
+      }
     }
 
     renderColors() {
@@ -33,7 +44,6 @@ export default class AddListModal extends React.Component {
           onPress={() => this.setState({ color })}
           />
         )
-
       })
     }
 
@@ -48,7 +58,7 @@ export default class AddListModal extends React.Component {
                     <Text style={styles.title}>Add A Service</Text>
 
                     <TextInput 
-                    style={[styles.input, {borderColor: this.state.color}]} 
+                    style={[styles.input, {borderColor: this.state.errors.length ? 'red' : this.state.color}]} 
                     placeholder='Service Name?'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}

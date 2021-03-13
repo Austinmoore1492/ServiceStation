@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList, Modal } from 'react-native';
 
 import colors from '../Colors';
-import tempData from '../tempData';
 import AddServiceModal from './AddServiceModal';
 
 import { AntDesign } from '@expo/vector-icons';
@@ -85,14 +84,15 @@ export default class ServiceModal extends React.Component {
                     updateList={this.props.updateList}
                     />
                 </Modal>
-                <View style={[ styles.addButton,{backgroundColor: list.color} ]} >
                 <TouchableOpacity 
                     onPress={() => this.toggleAddService()}
+                    style={[ styles.addButton,{backgroundColor: list.color} ]} 
                 >
+            
+           
                      <Text style={styles.add}>{ this.state.placeholderText }</Text>
-                </TouchableOpacity>
-               
-                </View>
+              
+            </TouchableOpacity>
             </SafeAreaView>
         )
     }
