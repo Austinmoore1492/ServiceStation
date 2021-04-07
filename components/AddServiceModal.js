@@ -50,7 +50,7 @@ export default class AddServiceModal extends React.Component {
                 </TouchableOpacity>
 
                 <View style={{alignSelf: 'stretch', marginHorizontal: 32}}>
-                    <Text style={styles.title}>Add A New {this.props.name}</Text>
+                    <Text style={styles.title}>New {this.props.list.name}</Text>
 
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.errors.includes('name') ? 'red' : this.props.color}]} 
