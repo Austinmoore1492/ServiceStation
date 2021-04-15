@@ -27,15 +27,15 @@ export default class ServiceList extends React.Component {
                 <Text style={styles.listTitle} numberOfLines={1}>{list.name}</Text>
                 <Text style={styles.listTitle} numberOfLines={1}>{list.model}</Text>
 
-                {/* May need this for future reference */}
-                {/* <View style={{alignItems: 'center'}}>
+                {/* Show total amount of service request needed to be completed and how many are completed */}
+                <View style={{alignItems: 'center'}}>
                     <Text style={styles.count}>{remainingCount}</Text>
-                    <Text style={styles.subtitle}>Upcoming</Text>
+                    <Text style={styles.subtitle}>Upcoming Service</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.count}>{completedCount}</Text>
-                    <Text style={styles.subtitle}>Completed</Text>
-                </View> */}
+                    <Text style={styles.subtitle}>Completed Services</Text>
+                </View> 
             </TouchableOpacity>
             </View>
          

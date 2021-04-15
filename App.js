@@ -52,7 +52,7 @@ export default class App extends React.Component {
           <View style={styles.divider} />
         </View>
      
-        <View style={{ height: '50%', paddingLeft: 16, marginVertical: 150 }}>
+        <View style={{ height: '50%', paddingLeft: 16, marginVertical: 125 }}>
           <FlatList 
             data={this.state.lists} 
             keyExtractor={item => item.id.toString()} 
