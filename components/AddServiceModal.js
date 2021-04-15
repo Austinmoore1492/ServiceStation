@@ -10,12 +10,13 @@ export default class AddServiceModal extends React.Component {
     state = {
       name: '',
       date: '',
+      type: '',
       completed: false,
       errors: []
     }
 
     createService = () => {
-        const {name, date, color} = this.state;
+        const {name, date, type, color} = this.state;
         let errors = []
         
         if(name === '' ){
@@ -26,6 +27,10 @@ export default class AddServiceModal extends React.Component {
             errors.push('date')
         }
 
+        if(type === ''){
+            errors.push('type')
+        }
+
         if (errors.length) { 
           this.setState({ errors });
           return;
@@ -33,10 +38,10 @@ export default class AddServiceModal extends React.Component {
         if(!errors.length) {
        
       let list = this.props.list;
-      list.service.unshift({ title: this.state.name, date: this.state.date, completed: false})
+      list.service.unshift({ title: this.state.name, date: this.state.date, type: this.state.type, completed: false})
 
       this.props.updateList(list);
-      this.setState({ name: '', date: ''})
+      this.setState({ name: '', date: '', type: ''})
       this.props.closeModal();
         }
       }
@@ -50,13 +55,19 @@ export default class AddServiceModal extends React.Component {
                 </TouchableOpacity>
 
                 <View style={{alignSelf: 'stretch', marginHorizontal: 32}}>
-                    <Text style={styles.title}>New {this.props.list.name}</Text>
+                    <Text style={styles.title}>New Service</Text>
 
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.errors.includes('name') ? 'red' : this.props.color}]} 
                     placeholder='Service Center'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}
+                    />
+                     <TextInput 
+                    style={[styles.input, {borderColor: this.state.errors.includes('type') ? 'red' : this.props.color}]} 
+                    placeholder='Type, ex. Oil Change'
+                    placeholderTextColor='#7a7a7a'
+                    onChangeText={text =>this.setState({ type: text })}
                     />
                      <TextInput 
                     style={[styles.input, {borderColor: this.state.errors.includes('date') ? 'red' : this.props.color}]} 

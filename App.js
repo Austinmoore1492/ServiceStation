@@ -55,7 +55,7 @@ export default class App extends React.Component {
         <View style={{ height: '50%', paddingLeft: 16, marginVertical: 150 }}>
           <FlatList 
             data={this.state.lists} 
-            keyExtractor={item => item.name} 
+            keyExtractor={item => item.id.toString()} 
             horizontal={true} 
             showsHorizontalScrollIndicator={false} 
             renderItem={({item}) => this.renderList(item)}
@@ -66,7 +66,7 @@ export default class App extends React.Component {
           <TouchableOpacity style={styles.addList} onPress={() => this.toggleAddService()}>
             <AntDesign name="plus" size={16} color={colors.blue} ></AntDesign>
           </TouchableOpacity>
-          <Text style={styles.add}>Add List</Text>
+          <Text style={styles.add}>Add Vehicle</Text>
         </View>
       </View>
 
@@ -118,5 +118,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 14,
     marginTop: 8,
+    marginLeft: -9
   }
 });

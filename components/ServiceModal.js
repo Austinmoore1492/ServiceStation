@@ -12,7 +12,6 @@ export default class ServiceModal extends React.Component {
     state = {
         newService: '',
         addServiceVisible: false,
-        placeholderText: `Add A New ${this.props.list.name}`,
     }
     
       toggleAddService() {
@@ -33,6 +32,7 @@ export default class ServiceModal extends React.Component {
                 <View style={{flexDirection: 'column', width: '100%' }}>
                 <TouchableOpacity style={{ width: '100%' }} onPress={() => this.toggleServiceCompleted(index)}>
                     <Text style={{ color: colors.lightGrey }}>{service.title}</Text>
+                    <Text style={{ color: colors.lightGrey }}>Type: {service.type}</Text>
                     <Text style={{ color: colors.lightGrey }}>Date: {service.date}</Text>
                     
                         <Text 
@@ -59,11 +59,13 @@ export default class ServiceModal extends React.Component {
                 <View style={[styles.section, styles.header, { borderBottomColor: list.color }]}>
                     <View>
                         <Text style={styles.title}>
-                            {list.name}
+                            {list.name} {list.model}
                         </Text>
-                        <Text style={styles.taskCount}>
+
+                        {/* Show amount of service orders complete */}
+                        {/* <Text style={styles.taskCount}>
                             {completedCount} of {taskCount} {list.name}s Complete
-                        </Text>
+                        </Text> */}
                     </View>
                 </View>
                 <View style={[styles.section,  {flex: 3}]}>
@@ -91,7 +93,7 @@ export default class ServiceModal extends React.Component {
                 >
             
            
-                     <Text style={styles.add}>{ this.state.placeholderText }</Text>
+                     <Text style={styles.add}>Add New Service For Your {list.model}</Text>
               
             </TouchableOpacity>
             </SafeAreaView>
@@ -164,12 +166,12 @@ const styles = StyleSheet.create ({
         justifyContent: 'center',
     },
     serviceContainer: {
-        paddingVertical: 16,
+        paddingVertical: 4,
         flexDirection: 'row',
         alignItems: 'center',
         borderWidth: 2,
         borderColor: 'transparent',
-        marginBottom: 16,
+        marginBottom: 24,
         paddingLeft: 10
     }
 })

@@ -10,27 +10,32 @@ export default class AddListModal extends React.Component {
 
     state = {
       name: '',
+      model: '',
       color: this.backgroundColors[0],
       errors: []
     }
 
     createService = () => {
-      const {name, color} = this.state;
+      const {name, model, color} = this.state;
       let errors = []
       
       if(name === '' ){
         errors.push('name')
       } 
+      if(model === '' ){
+        errors.push('model')
+      } 
+
       if (errors.length) { 
         this.setState({ errors });
         return;
       } 
       if(!errors.length) {
-        const list = { name, color }
+        const list = { name, model, color }
 
         this.props.addList(list)
         this.setState({ errors: [] });
-        this.setState({ name: '' });
+        this.setState({ name: '', model: '' });
         this.props.closeModal();
       }
     }
@@ -59,9 +64,16 @@ export default class AddListModal extends React.Component {
 
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.errors.length ? 'red' : this.state.color}]} 
-                    placeholder='Service Name?'
+                    placeholder='Make'
                     placeholderTextColor='#7a7a7a'
                     onChangeText={text =>this.setState({ name: text })}
+                    />
+
+                    <TextInput 
+                    style={[styles.input, {borderColor: this.state.errors.length ? 'red' : this.state.color}]} 
+                    placeholder='Model'
+                    placeholderTextColor='#7a7a7a'
+                    onChangeText={text =>this.setState({ model: text })}
                     />
 
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 12}}>

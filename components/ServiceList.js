@@ -25,14 +25,17 @@ export default class ServiceList extends React.Component {
                 </Modal>
    <TouchableOpacity style={[styles.listContainer, {backgroundColor: list.color}]} onPress={() => this.toggleListModal()}>
                 <Text style={styles.listTitle} numberOfLines={1}>{list.name}</Text>
-                <View style={{alignItems: 'center'}}>
+                <Text style={styles.listTitle} numberOfLines={1}>{list.model}</Text>
+
+                {/* May need this for future reference */}
+                {/* <View style={{alignItems: 'center'}}>
                     <Text style={styles.count}>{remainingCount}</Text>
                     <Text style={styles.subtitle}>Upcoming</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.count}>{completedCount}</Text>
                     <Text style={styles.subtitle}>Completed</Text>
-                </View>
+                </View> */}
             </TouchableOpacity>
             </View>
          
