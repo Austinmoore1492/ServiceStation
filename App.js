@@ -57,17 +57,23 @@ export default class App extends React.Component {
             data={this.state.lists} 
             keyExtractor={item => item.id.toString()} 
             horizontal={true} 
-            showsHorizontalScrollIndicator={false} 
+            showsHorizontalScrollIndicator={true} 
             renderItem={({item}) => this.renderList(item)}
             keyboardShouldPersistTaps="always"
             />
         </View>
-        <View style={styles.addListButton} >
+        {/* <View style={styles.addListButton} >
           <TouchableOpacity style={styles.addList} onPress={() => this.toggleAddService()}>
             <AntDesign name="plus" size={16} color={colors.blue} ></AntDesign>
           </TouchableOpacity>
           <Text style={styles.add}>Add Vehicle</Text>
-        </View>
+        </View> */}
+        <View style={{ width: '80%'}}>
+          <TouchableOpacity style={[ styles.addList, { alignSelf: 'stretch', marginTop: -30} ]} onPress={() => this.toggleAddService()}>
+              <Text 
+              style={{color: colors.white, fontWeight: "600"}}>Add A New Vehicle</Text> 
+          </TouchableOpacity>
+          </View>
       </View>
 
     );
@@ -95,14 +101,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   addList: {
-    width: 60,
-    height: 60,
-    borderWidth: 2,
-    borderColor: colors.lightBlue,
-    borderRadius: 60,
-    padding: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // width: 60,
+    // height: 60,
+    // borderWidth: 2,
+    // borderColor: colors.lightBlue,
+    // borderRadius: 60,
+    // padding: 15,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    marginTop: 24,
+        height: 50,
+        borderRadius: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.blue,
   },
   addListButton: {
     position: 'absolute',

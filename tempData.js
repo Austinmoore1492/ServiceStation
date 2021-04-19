@@ -50,5 +50,25 @@ export default tempData = [
                 completed: true
             }
         ]
+    },
+    {
+        id: 3,
+        name: 'Ram',
+        model: '1500',
+        color: '#595bd9',
+        service: [
+            {
+                title: 'Seeger Toyota',
+                date: '06 Mar 2021',
+                type: 'Oil Change',
+                completed: false
+            },
+            {
+                title: 'Seeger Toyota',
+                date: '12 Dec 2020',
+                type: 'Tire Rotation',
+                completed: true
+            }
+        ]
     }
 ];
