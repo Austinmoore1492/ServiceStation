@@ -60,7 +60,7 @@ export default class AddListModal extends React.Component {
                 </TouchableOpacity>
 
                 <View style={{alignSelf: 'stretch', marginHorizontal: 32}}>
-                    <Text style={styles.title}>Add A Service</Text>
+                    <Text style={styles.title}>Add A Vehicle</Text>
 
                     <TextInput 
                     style={[styles.input, {borderColor: this.state.errors.length ? 'red' : this.state.color}]} 
