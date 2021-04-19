@@ -4,7 +4,7 @@ Used to track each service you've had done to your vehicle.
 
 Front Screen, Vehicle List: 
 
-![Vehicle List](/README_IMAGES/vehicle_list.png)
+![Vehicle List](/README_IMAGES/vehicle_list-bg.png)
 
 Add New Vehicle: 
 
@@ -12,8 +12,8 @@ Add New Vehicle:
 
 Service List: 
 
-![Service List](/README_IMAGES/service_list.png)
+![Service List](/README_IMAGES/service_list-bg.png)
 
 Add New Service
 
-![Add Service](/README_IMAGES/add_service.png)
+![Add Service](/README_IMAGES/add_service-bg.png)
