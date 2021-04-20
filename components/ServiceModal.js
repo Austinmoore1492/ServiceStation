@@ -104,7 +104,7 @@ export default class ServiceModal extends React.Component {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        backgroundColor: '#1d1d1d',
+        backgroundColor: '#062e3d',
         justifyContent: 'center',
         alignItems: 'center',
     },

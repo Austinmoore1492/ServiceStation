@@ -96,7 +96,7 @@ const styles = StyleSheet.create ({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#1d1d1d',
+        backgroundColor: '#062e3d',
     },
     title: {
         fontSize: 28,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create ({
         marginBottom: 16,
     },
     input: {
-        borderWidth: StyleSheet.hairlineWidth,
+        borderWidth: 2,
         color: colors.lightGrey,
         borderRadius: 6,
         height: 50,
