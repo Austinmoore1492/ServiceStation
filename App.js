@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList, StatusBar, Modal } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, FlatList, StatusBar, Modal } from 'react-native';
 
-import { AntDesign } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import colors from './Colors';
 import tempData from './tempData';
@@ -37,13 +37,23 @@ export default class App extends React.Component {
 
   render() {
     return (
+
+      <View style={styles.main}>
+           <LinearGradient
+      start={[0, 1]}
+      end={[1, 0]}
+      colors={["#062e3d", "#20566b"]}
+
+    >
       <View style={styles.container}>
         <StatusBar
           barStyle="light-content"
         />
         <Modal animationType='slide' visible={this.state.addServiceVisible} onRequestClose={() => this.toggleAddService()}>
           <AddListModal closeModal={() => this.toggleAddService()} addList={this.addList}/>
-        </Modal>
+        </Modal>   
+      
+     
         <View style={{ flexDirection: 'row' }}>
           <View style={styles.divider} />
           <Text style={styles.title}>
@@ -57,7 +67,7 @@ export default class App extends React.Component {
             data={this.state.lists} 
             keyExtractor={item => item.id.toString()} 
             horizontal={true} 
-            showsHorizontalScrollIndicator={true} 
+            showsHorizontalScrollIndicator={false} 
             renderItem={({item}) => this.renderList(item)}
             keyboardShouldPersistTaps="always"
             />
@@ -73,7 +83,9 @@ export default class App extends React.Component {
               <Text 
               style={{color: colors.white, fontWeight: "600"}}>Add A New Vehicle</Text> 
           </TouchableOpacity>
-          </View>
+          </View></View>
+         
+      </LinearGradient>
       </View>
 
     );
@@ -82,11 +94,14 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#1d1d1d',
+    height: '100%'
+  },
+  container: {
     alignItems: 'center',
     paddingTop: 100,
+    height: '100%'
   },
   divider: {
     backgroundColor: colors.lightBlue,
