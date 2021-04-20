@@ -40,9 +40,9 @@ export default class App extends React.Component {
 
       <View style={styles.main}>
            <LinearGradient
-      start={[0, 1]}
-      end={[1, 0]}
-      colors={["#03222e", "#062e3d"]}
+      start={[1, 1]}
+      end={[0, 0]}
+      colors={["#01141c", "#0d4559"]}
 
     >
       <View style={styles.container}>
