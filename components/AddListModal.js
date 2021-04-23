@@ -55,7 +55,7 @@ export default class AddListModal extends React.Component {
     render (){
         return (
             <KeyboardAvoidingView style={styles.container} behavior='padding'>
-                <TouchableOpacity style={{position: 'absolute', top: 64, right: 32, zIndex: 10}} onPress={this.props.closeModal}>
+                <TouchableOpacity style={{position: 'absolute', top: 64, right: 32, zIndex: 10 }} onPress={this.props.closeModal}>
                     <AntDesign name="close" size={24} color={this.state.color} />
                 </TouchableOpacity>
 
@@ -80,7 +80,8 @@ export default class AddListModal extends React.Component {
                       {this.renderColors()}
                     </View>
 
-                    <TouchableOpacity style={[styles.create,{ backgroundColor: this.state.color}]} onPress={this.createService}>
+                    <TouchableOpacity style={[styles.create,{ backgroundColor: this.state.color, shadowColor: colors.shadow,
+    shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8}]} onPress={this.createService}>
                         <Text 
                         style={{color: colors.white, fontWeight: "600"}}>Add</Text>
                     </TouchableOpacity>

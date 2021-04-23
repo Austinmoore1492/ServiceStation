@@ -76,7 +76,8 @@ export default class AddServiceModal extends React.Component {
                     onChangeText={text =>this.setState({ date: text })}
                     />
 
-                    <TouchableOpacity style={[styles.create, { backgroundColor: this.props.color }]} onPress={this.createService}>
+                    <TouchableOpacity style={[styles.create, { backgroundColor: this.props.color, shadowColor: colors.shadow,
+    shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8 }]} onPress={this.createService}>
                         <Text 
                         style={{color: colors.white, fontWeight: "600"}}>Add</Text>
                     </TouchableOpacity>

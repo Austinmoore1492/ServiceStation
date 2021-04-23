@@ -89,7 +89,8 @@ export default class ServiceModal extends React.Component {
                 </Modal>
                 <TouchableOpacity 
                     onPress={() => this.toggleAddService()}
-                    style={[ styles.addButton,{backgroundColor: list.color} ]} 
+                    style={[ styles.addButton,{backgroundColor: list.color, shadowColor: colors.shadow,
+                        shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8} ]} 
                 >
             
            

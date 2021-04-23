@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, FlatList, StatusBar, Modal } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, FlatList, StatusBar, Modal, Dimensions } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
+import { AntDesign } from '@expo/vector-icons';
 
 import colors from './Colors';
 import tempData from './tempData';
@@ -14,6 +15,7 @@ export default class App extends React.Component {
     addServiceVisible: false,
     lists: tempData
   }
+
 
   toggleAddService() {
     this.setState({addServiceVisible: !this.state.addServiceVisible})
@@ -36,13 +38,15 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { width } = Dimensions.get('window');
     return (
+      
 
       <View style={styles.main}>
            <LinearGradient
       start={[1, 1]}
       end={[0, 0]}
-      colors={["#01141c", "#0d4559"]}
+      colors={["#0d4559", "#01141c"]}
 
     >
       <View style={styles.container}>
@@ -50,7 +54,7 @@ export default class App extends React.Component {
           barStyle="light-content"
         />
         <Modal animationType='slide' visible={this.state.addServiceVisible} onRequestClose={() => this.toggleAddService()}>
-          <AddListModal closeModal={() => this.toggleAddService()} addList={this.addList}/>
+          <AddListModal closeModal={() => this.toggleAddService()} addList={this.addList} />
         </Modal>   
       
      
@@ -61,29 +65,34 @@ export default class App extends React.Component {
           </Text>
           <View style={styles.divider} />
         </View>
-     
-        <View style={{ height: '50%', paddingLeft: 16, marginVertical: 125 }}>
+        <Text
+          style={[styles.title, { marginTop: 75 }]}
+        >Vehicles</Text>
+
+        <View style={{ height: '50%', width: '80%', marginVertical: 40, }}>
           <FlatList 
             data={this.state.lists} 
             keyExtractor={item => item.id.toString()} 
             horizontal={true} 
-            showsHorizontalScrollIndicator={false} 
+            showsHorizontalScrollIndicator={true} 
             renderItem={({item}) => this.renderList(item)}
             keyboardShouldPersistTaps="always"
-            />
+        />
         </View>
-        {/* <View style={styles.addListButton} >
+        <View style={[styles.addListButton, { shadowColor: colors.shadow,
+    shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8}]} >
           <TouchableOpacity style={styles.addList} onPress={() => this.toggleAddService()}>
-            <AntDesign name="plus" size={16} color={colors.blue} ></AntDesign>
+            <AntDesign name="plus" size={32} color={colors.blue} ></AntDesign>
+            <Text style={{ paddingLeft: 8, color: colors.lightBlue }}>ADD</Text>
           </TouchableOpacity>
-          <Text style={styles.add}>Add Vehicle</Text>
-        </View> */}
-        <View style={{ width: '80%'}}>
+        </View>
+        {/* <View style={{ width: '80%'}}>
           <TouchableOpacity style={[ styles.addList, { alignSelf: 'stretch', marginTop: -30} ]} onPress={() => this.toggleAddService()}>
               <Text 
               style={{color: colors.white, fontWeight: "600"}}>Add A New Vehicle</Text> 
           </TouchableOpacity>
-          </View></View>
+          </View> */}
+          </View>
          
       </LinearGradient>
       </View>
@@ -118,32 +127,33 @@ const styles = StyleSheet.create({
   addList: {
     // width: 60,
     // height: 60,
+    backgroundColor: '#0d4559',
+    position: 'relative',
     // borderWidth: 2,
-    // borderColor: colors.lightBlue,
-    // borderRadius: 60,
-    // padding: 15,
+    borderColor: colors.shadow,
+    borderRadius: 60,
+    padding: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+ 
+    // marginTop: 24,
+    // height: 50,
+    // borderRadius: 6,
     // alignItems: 'center',
     // justifyContent: 'center',
-    marginTop: 24,
-        height: 50,
-        borderRadius: 6,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: colors.blue,
+    // backgroundColor: colors.blue,
   },
   addListButton: {
     position: 'absolute',
-    bottom: 75,
-    left: '50%',
-    transform: [
-      {
-        translateX: "-30%"
-      }]
+    bottom: 50,
+    right: 30,
+    elevation: 5,
   },
   add: {
     color: colors.blue,
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: 16,
     marginTop: 8,
     marginLeft: -9
   }
