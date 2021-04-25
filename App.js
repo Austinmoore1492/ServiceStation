@@ -39,6 +39,7 @@ export default class App extends React.Component {
 
   render() {
     const { width } = Dimensions.get('window');
+
     return (
       
 
@@ -69,15 +70,17 @@ export default class App extends React.Component {
           style={[styles.title, { marginTop: 75 }]}
         >Vehicles</Text>
 
-        <View style={{ height: '50%', width: '80%', marginVertical: 40, }}>
+        <View style={styles.boxContainer }>
+          <View style={styles.hideBox }>
           <FlatList 
             data={this.state.lists} 
             keyExtractor={item => item.id.toString()} 
             horizontal={true} 
-            showsHorizontalScrollIndicator={true} 
+            showsHorizontalScrollIndicator={false} 
             renderItem={({item}) => this.renderList(item)}
             keyboardShouldPersistTaps="always"
-        />
+          />
+          </View>
         </View>
         <View style={[styles.addListButton, { shadowColor: colors.shadow,
     shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8}]} >
@@ -123,6 +126,17 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: colors.lightGrey,
     paddingHorizontal: 10,
+  },
+  boxContainer: {
+    height: '45%', 
+    width: '100%', 
+    marginVertical: 40,
+    paddingLeft: 25,
+  },
+  hideBox: {
+    height: '100%', 
+    borderLeftColor: '#01141c', 
+    borderLeftWidth: 1,
   },
   addList: {
     // width: 60,

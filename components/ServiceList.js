@@ -24,8 +24,9 @@ export default class ServiceList extends React.Component {
                 <Modal animationType="slide" visible={this.state.showListVisible} onRequestClose={() => this.toggleListModal()}>
                     <ServiceModal list={list} closeModal={() => this.toggleListModal()} updateList={ this.props.updateList }/>
                 </Modal>
-   <TouchableOpacity style={[styles.listContainer, {backgroundColor: list.color, shadowColor: colors.shadow,
-    shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8}]} onPress={() => this.toggleListModal()}>
+   <TouchableOpacity style={[styles.listContainer, { backgroundColor: list.color, shadowColor: colors.shadow,
+    shadowOffset: { width: 3, height: 6 }, shadowOpacity: 0.8 }]} onPress={() => this.toggleListModal()}>
+                  
                 <Text style={styles.listTitle} numberOfLines={1}>{list.name}</Text>
                 <Text style={styles.listTitle} numberOfLines={1}>{list.model}</Text>
 
@@ -49,10 +50,14 @@ export default class ServiceList extends React.Component {
 const styles = StyleSheet.create ({
     listContainer: {
         paddingVertical: 32,
+        marginVertical: 30,
+        marginLeft: 20,
         borderRadius: 6,
-        marginRight: 50,
+        marginRight: 25,
         alignItems: 'center',
         width: 250,
+        zIndex: 100,
+        elevation: 100
     },
     listTitle: {
         fontSize: 24,
