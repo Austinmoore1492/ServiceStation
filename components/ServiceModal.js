@@ -74,8 +74,9 @@ export default class ServiceModal extends React.Component {
                     data={list.service} 
                     renderItem={({item, index}) => this.renderService(item, index)} 
                     keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={{paddingHorizontal: 32, paddingVertical: 64}}
+                    contentContainerStyle={{ paddingHorizontal: 32, paddingVertical: 32 }}
                     showsVerticalScrollIndicator={false}
+                    
                     />
                 </View>
 
@@ -117,6 +118,10 @@ const styles = StyleSheet.create ({
         justifyContent: 'flex-end',
         marginLeft: 64,
         borderBottomWidth: 3,
+        shadowColor: colors.shadow,
+        shadowOffset: { width: 3, height: 6 }, 
+        shadowOpacity: 0.8, 
+        marginBottom: 10,
     },
     title: {
         fontSize: 30,
@@ -173,6 +178,6 @@ const styles = StyleSheet.create ({
         borderWidth: 2,
         borderColor: 'transparent',
         marginBottom: 24,
-        paddingLeft: 10
+        paddingLeft: 10,
     }
 })
