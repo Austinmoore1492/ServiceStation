@@ -28,6 +28,30 @@ export default tempData = [
                 date: '07 July 2020',
                 type: 'Oil Change',
                 completed: true
+            },
+            {
+                title: 'Seeger Toyota',
+                date: '13 Mar 2020',
+                type: 'Oil Change',
+                completed: true
+            },
+            {
+                title: 'Seeger Toyota',
+                date: '12 Dec 2020',
+                type: 'Windshield Replacement',
+                completed: true
+            },
+            {
+                title: 'Seeger Toyota',
+                date: '10 Oct 2019',
+                type: 'Oil Change',
+                completed: true
+            },
+            {
+                title: 'Seller Sexton',
+                date: '07 July 2019',
+                type: 'Oil Change',
+                completed: true
             }
         ]
     },
