@@ -13,7 +13,6 @@ import colors from "../Colors";
 import AddServiceModal from "./AddServiceModal";
 
 import { AntDesign } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 
 export default class ServiceModal extends React.Component {
   state = {
@@ -95,21 +94,27 @@ export default class ServiceModal extends React.Component {
                         </Text> */}
           </View>
         </View>
+    
+
         <View style={[styles.section, { flex: 3, marginBottom: 10 }]}>
+        <View style={[ styles.borderTop, { shadowColor: colors.shadow,
+    shadowOffset: { width: 4, height: 4 }, shadowOpacity: 0.5 }]} />
           <FlatList
             style={styles.text}
             data={list.service}
             renderItem={({ item, index }) => this.renderService(item, index)}
             keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={{
+            contentContainerStyle={
+              {
               paddingHorizontal: 32,
               paddingVertical: 16,
             }}
             showsVerticalScrollIndicator={false}
           />
-          <View style={{ borderTopWidth: 2, borderColor: list.color, shadowColor: colors.shadow,
-    shadowOffset: { width: 4, height: 7 }, shadowOpacity: 0.8 }} />
-        </View>
+          <View style={[ styles.borderTop, { shadowColor: colors.shadow,
+    shadowOffset: { width: -2, height: -2 }, shadowOpacity: 0.5 }]} />
+
+        </View>      
         
 
         <Modal
@@ -141,7 +146,7 @@ export default class ServiceModal extends React.Component {
           >
             <AntDesign name="plus" size={32} color={colors.blue}></AntDesign>
             <Text style={{ paddingLeft: 8, color: colors.lightBlue }}>
-              Service
+              SERVICE
             </Text>
           </TouchableOpacity>
         </View>
@@ -156,6 +161,7 @@ export default class ServiceModal extends React.Component {
                      <Text style={styles.add}>Add New Service For Your {list.model}</Text>
               
             </TouchableOpacity> */}
+            <SafeAreaView style={{ flex: 0, backgroundColor: list.color, opacity: 0.2 }}></SafeAreaView>
       </SafeAreaView>
     );
   }
@@ -180,6 +186,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 6 },
     shadowOpacity: 0.8,
     marginBottom: 10,
+  },
+  borderTop: {
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center'
   },
   title: {
     fontSize: 30,
