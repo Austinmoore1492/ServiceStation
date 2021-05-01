@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   View,
   Text,
@@ -69,6 +69,7 @@ export default class ServiceModal extends React.Component {
       .length;
 
     return (
+
       <SafeAreaView style={styles.container}>
         <TouchableOpacity
           style={{ position: "absolute", top: 64, right: 32, zIndex: 10 }}
@@ -96,9 +97,7 @@ export default class ServiceModal extends React.Component {
         </View>
     
 
-        <View style={[styles.section, { flex: 3, marginBottom: 10 }]}>
-        <View style={[ styles.borderTop, { shadowColor: colors.shadow,
-    shadowOffset: { width: 4, height: 4 }, shadowOpacity: 0.5 }]} />
+        <View style={[styles.section, { flex: 3, marginBottom: 45, borderBottomColor: '#ff5100', borderBottomWidth: 2 }]}>
           <FlatList
             style={styles.text}
             data={list.service}
@@ -111,9 +110,6 @@ export default class ServiceModal extends React.Component {
             }}
             showsVerticalScrollIndicator={false}
           />
-          <View style={[ styles.borderTop, { shadowColor: colors.shadow,
-    shadowOffset: { width: -2, height: -2 }, shadowOpacity: 0.5 }]} />
-
         </View>      
         
 
@@ -144,8 +140,8 @@ export default class ServiceModal extends React.Component {
             style={styles.addList}
             onPress={() => this.toggleAddService()}
           >
-            <AntDesign name="plus" size={32} color={colors.blue}></AntDesign>
-            <Text style={{ paddingLeft: 8, color: colors.lightBlue }}>
+            <AntDesign name="plus" size={32} color={'#0d4559'}></AntDesign>
+            <Text style={{ paddingLeft: 8, color: '#0d4559' }}>
               SERVICE
             </Text>
           </TouchableOpacity>
@@ -161,8 +157,8 @@ export default class ServiceModal extends React.Component {
                      <Text style={styles.add}>Add New Service For Your {list.model}</Text>
               
             </TouchableOpacity> */}
-            <SafeAreaView style={{ flex: 0, backgroundColor: list.color, opacity: 0.2 }}></SafeAreaView>
-      </SafeAreaView>
+
+      </SafeAreaView>    
     );
   }
 }
@@ -180,12 +176,12 @@ const styles = StyleSheet.create({
   },
   header: {
     justifyContent: "flex-end",
-    marginLeft: 64,
+    marginLeft: 32,
     borderBottomWidth: 3,
     shadowColor: colors.shadow,
     shadowOffset: { width: 3, height: 6 },
     shadowOpacity: 0.8,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   borderTop: {
     justifyContent: 'center',
@@ -250,7 +246,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   addList: {
-    backgroundColor: "#0d4559",
+    backgroundColor: "#ff5100",
     position: "relative",
     borderColor: colors.shadow,
     borderRadius: 60,
