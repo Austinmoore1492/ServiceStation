@@ -3,7 +3,7 @@ export default tempData = [
         id: 1,
         name: 'Toyota',
         model: 'Highlander',
-        color: '#24a6d9',
+        color: '#405515',
         service: [
             {
                 title: 'Seeger Toyota',
@@ -79,7 +79,7 @@ export default tempData = [
         id: 3,
         name: 'Ram',
         model: '1500',
-        color: '#595bd9',
+        color: '#0076be',
         service: [
             {
                 title: 'Seeger Toyota',

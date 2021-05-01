@@ -97,7 +97,7 @@ export default class ServiceModal extends React.Component {
         </View>
     
 
-        <View style={[styles.section, { flex: 3, marginBottom: 45, borderBottomColor: '#ff5100', borderBottomWidth: 2 }]}>
+        <View style={[styles.section, { flex: 3, marginBottom: 45, borderBottomColor: list.color, borderBottomWidth: 2 }]}>
           <FlatList
             style={styles.text}
             data={list.service}
@@ -130,6 +130,8 @@ export default class ServiceModal extends React.Component {
           style={[
             styles.addListButton,
             {
+              backgroundColor: list.color,
+              borderRadius: 60,
               shadowColor: colors.shadow,
               shadowOffset: { width: 3, height: 6 },
               shadowOpacity: 0.8,
@@ -140,8 +142,8 @@ export default class ServiceModal extends React.Component {
             style={styles.addList}
             onPress={() => this.toggleAddService()}
           >
-            <AntDesign name="plus" size={32} color={'#0d4559'}></AntDesign>
-            <Text style={{ paddingLeft: 8, color: '#0d4559' }}>
+            <AntDesign name="plus" size={32} color={'#fff'}></AntDesign>
+            <Text style={{ paddingLeft: 8, color: '#fff' }}>
               SERVICE
             </Text>
           </TouchableOpacity>
@@ -246,10 +248,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   addList: {
-    backgroundColor: "#ff5100",
     position: "relative",
     borderColor: colors.shadow,
-    borderRadius: 60,
     padding: 15,
     flexDirection: "row",
     alignItems: "center",

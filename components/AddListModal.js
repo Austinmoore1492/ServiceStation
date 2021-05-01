@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import tempData from '../tempData';
 
 export default class AddListModal extends React.Component {
-  backgroundColors = ['#5cd859', '#24a6d9', '#595bd9', '#8022d9', '#d159d8', '#d85963', '#d88559']
+  backgroundColors = ['#c2211a', '#8022d9', '#0076be', '#005a5a', '#1b6f1b', '#405515', '#ffb101']
 
     state = {
       name: '',
