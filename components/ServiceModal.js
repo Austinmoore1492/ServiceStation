@@ -77,6 +77,8 @@ export default class ServiceModal extends React.Component {
         >
           <AntDesign name="close" size={24} color={list.color} />
         </TouchableOpacity>
+
+        {/* Vehicle Make and Model */}
         <View
           style={[
             styles.section,
@@ -96,7 +98,7 @@ export default class ServiceModal extends React.Component {
           </View>
         </View>
     
-
+{/* Render Service List */}
         <View style={[styles.section, { flex: 3, marginBottom: 45, borderBottomColor: list.color, borderBottomWidth: 2 }]}>
           <FlatList
             style={styles.text}
@@ -180,10 +182,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     marginLeft: 32,
     borderBottomWidth: 3,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 3, height: 6 },
-    shadowOpacity: 0.8,
-    marginBottom: 5,
   },
   borderTop: {
     justifyContent: 'center',
@@ -194,6 +192,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "800",
     color: colors.lightGrey,
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.8,
+    marginBottom: 2,
   },
   taskCount: {
     marginTop: 4,
